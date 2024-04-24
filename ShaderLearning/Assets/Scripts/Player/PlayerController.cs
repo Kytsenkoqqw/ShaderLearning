@@ -5,18 +5,16 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-  
-    [SerializeField] private float _speed = 12f;
-
+    public CharacterController controller;
+    [SerializeField] private float _speed = 6.0f;
+    
     void FixedUpdate()
     {
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
-        Vector3 move = new Vector3(x, 0f, z);
+        Vector3 move = transform.right * x + transform.forward * z;
 
-        Vector3 newPosition = transform.position + move * _speed * Time.deltaTime;
-
-        transform.position = newPosition;
+        controller.Move(move * _speed * Time.deltaTime);
     }
 }
