@@ -9,6 +9,9 @@ Shader "Unlit/MaskWorld1"
         Tags { "RenderType"="Opaque" "Queue" = "Geometry-1"}
         LOD 100
         
+        Blend Zero One
+        Zwrite off
+        
         Stencil
         {
             Ref 2
